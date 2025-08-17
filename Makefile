@@ -1,4 +1,4 @@
-.PHONY: all main full-setup update tools dev-tools linux-tools additional-setup make-executable clean
+.PHONY: all main full-setup update tools dev-tools linux-tools devops-tools make-executable clean
 
 # Default target
 all: main
@@ -6,7 +6,7 @@ all: main
 # Make all scripts executable
 make-executable:
 	@echo "Making scripts executable..."
-	@chmod +x update.sh tools.sh dev-tools.sh linux-tools.sh additional-setup.sh
+	@chmod +x update.sh tools.sh dev-tools.sh linux-tools.sh devops-tools.sh
 	@echo "Scripts are now executable."
 
 # Main setup (update + tools + dev-tools)
@@ -14,7 +14,7 @@ main: make-executable update tools dev-tools
 	@echo "Main setup completed successfully!"
 
 # Full setup (all scripts)
-full-setup: make-executable update tools dev-tools linux-tools additional-setup
+full-setup: make-executable update tools dev-tools linux-tools devops-tools
 	@echo "Full workstation setup completed successfully!"
 
 # Individual script targets
@@ -34,9 +34,9 @@ linux-tools: make-executable
 	@echo "Installing Linux utilities..."
 	@./linux-tools.sh
 
-additional-setup: make-executable
-	@echo "Running additional setup..."
-	@./additional-setup.sh
+devops-tools: make-executable
+	@echo "Installation DevOps tools..."
+	@./devops-tools.sh
 
 # Clean target (if needed)
 clean:
@@ -51,6 +51,6 @@ help:
 	@echo "  tools         - Install essential tools"
 	@echo "  dev-tools     - Install development tools"
 	@echo "  linux-tools   - Install Linux utilities"
-	@echo "  additional-setup - Install Zsh, Oh My Zsh, and configure Git"
+	@echo "  devops-tools  - Install Terraform, aws-cli, configure Git"
 	@echo "  make-executable - Make all scripts executable"
 	@echo "  help          - Show this help message"
