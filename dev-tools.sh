@@ -2,7 +2,7 @@
 set -e
 
 echo "Installing dev tools..."
-sudo apt install -y \ 
+sudo apt install -y \
     make build-essential libssl-dev zlib1g-dev \
     libbz2-dev libreadline-dev libsqlite3-dev \
     llvm libncurses5-dev libncursesw5-dev \
